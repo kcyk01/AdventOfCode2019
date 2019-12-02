@@ -5,11 +5,11 @@ const input = rawInput.trim().split(',').map(e => parseInt(e));
 function runProgram(values) {
     let i = 0;
     while (i < values.length && values[i] !== 99) {
-        const [a, b, c, d] = values.slice(i, i + 4);
-        if (a === 1) {
-            values[d] = values[b] + values[c];
+        const [op, in1, in2, out] = values.slice(i, i + 4);
+        if (op === 1) {
+            values[out] = values[in1] + values[in2];
         } else {
-            values[d] = values[b] * values[c];
+            values[out] = values[in1] * values[in2];
         }
         i += 4;
     }
