@@ -1,4 +1,4 @@
-const input = `70904
+const rawInput = `70904
 66770
 118678
 58460
@@ -99,20 +99,16 @@ const input = `70904
 133856
 82022
 `;
+const input = rawInput.trim().split('\n');
 
 function part1() {
-    const sum = input
-        .trim()
-        .split('\n')
+    return input
         .map(n => Math.floor(parseInt(n) / 3) - 2)
         .reduce((a,b) => a + b);
-    return sum;
 }
 
 function part2() {
-    const sum = input
-        .trim()
-        .split('\n')
+    return input
         .map(n => {
             let s = 0, v = parseInt(n);
             while (v > 0) {
@@ -122,7 +118,6 @@ function part2() {
             return s;
         })
         .reduce((a,b) => a + b);
-    return sum;
 }
 
 console.log(part1());
