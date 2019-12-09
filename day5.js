@@ -33,11 +33,19 @@ function execute(input) {
                 break;
             case '5':
                 opSize = 0;
-                i = getParamValue(p1mode, values, i+1) && getParamValue(p2mode, values, i+2) || i + 3;
+                if (getParamValue(p1mode, values, i+1, basePos) !== 0) {
+                    i = getParamValue(p2mode, values, i+2, basePos);
+                } else {
+                    i += 3;
+                }
                 break;
             case '6':
                 opSize = 0;
-                i = !getParamValue(p1mode, values, i+1) && getParamValue(p2mode, values, i+2) || i + 3;
+                if (getParamValue(p1mode, values, i+1, basePos) === 0) {
+                    i = getParamValue(p2mode, values, i+2, basePos);
+                } else {
+                    i += 3;
+                }
                 break;
             case '7':
                 opSize = 4;
