@@ -50,7 +50,7 @@ function part1() {
 function part2() {
     let flattenedImage = '';
     for (let i = 0; i < area; i++) {
-        flattenedImage += (getPixel(i) === '0' ? '.' : '#');
+        flattenedImage += (getPixel(i) === '0' ? ' ' : '#');
     }
     return printImage(flattenedImage);
 }
