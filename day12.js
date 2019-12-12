@@ -1,4 +1,4 @@
-let rawInput = `<x=-15, y=1, z=4>
+const rawInput = `<x=-15, y=1, z=4>
 <x=1, y=-10, z=-8>
 <x=-5, y=4, z=9>
 <x=4, y=6, z=-2>
@@ -71,7 +71,7 @@ class Moon {
     }
 }
 
-let moonConfigs = rawInput
+const moonConfigs = rawInput
     .trim()
     .split('\n')
     .map(m => m.match(/x=(-?\d+), y=(-?\d+), z=(-?\d+)/).slice(1, 4));
@@ -80,7 +80,7 @@ function part1() {
     const moons = moonConfigs.map((m, i) => new Moon(i, ...m));
     for (let i = 0; i < 1000; i++) {
         moons.forEach(moon => moon.applyGravity(moons));
-        moons.forEach(moon => moon.applyVelocity(moons));
+        moons.forEach(moon => moon.applyVelocity());
     }
     return moons.map(m => m.getTotalEnergy()).reduce((a, b) => a + b);
 }
