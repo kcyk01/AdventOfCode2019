@@ -137,24 +137,21 @@ function paint(isPart2 = false) {
         x = 0,
         y = 0
         dir = 0;
-    while (true) {
-        execute(
-            [...instructions],
-            () => {
-                return paintState[[x,y]] || (isPart2 && x === 0 && y === 0 ? 1 : 0);
-            },
-            (out) => {
-                if (isPainting) {
-                    paintState[[x,y]] = out;
-                } else {
-                    dir = (dir + (out * 2 - 1) + 4) % 4;
-                    [x, y] = stepForward(x, y, dir);
-                }
-                isPainting = !isPainting;
+    execute(
+        [...instructions],
+        () => {
+            return paintState[[x,y]] || (isPart2 && x === 0 && y === 0 ? 1 : 0);
+        },
+        (out) => {
+            if (isPainting) {
+                paintState[[x,y]] = out;
+            } else {
+                dir = (dir + (out * 2 - 1) + 4) % 4;
+                [x, y] = stepForward(x, y, dir);
             }
-        );
-        break;
-    }
+            isPainting = !isPainting;
+        }
+    );
     return paintState;
 }
 
