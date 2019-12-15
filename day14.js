@@ -1,4 +1,4 @@
-let rawInput = `15 RNMTG => 6 QSXV
+const rawInput = `15 RNMTG => 6 QSXV
 21 MKJN => 9 KDFZ
 1 KVFL, 4 NZWL => 3 FHDT
 1 FZJXD, 2 SWZK, 1 QRLRS => 6 ZRNK
@@ -95,7 +95,6 @@ class Chemical {
         });
     }
 }
-
 
 const reactionInstructions = rawInput.trim().split('\n')
     .map(e => e.match(/^(.+) => (\d+) (\w+)$/));
